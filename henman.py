@@ -1,11 +1,8 @@
 import random
 
-# 1. 단어 리스트 (자료에 나온 방식대로 소문자로 구성하거나, 
-# 처음부터 대문자로 적어두는 것이 .upper()를 피하는 방법입니다.)
 words = ['SKA', 'GY', 'TJD', 'QWER', 'WASD']
 target = random.choice(words)
 
-# 2. 표시용 리스트 생성
 display = ['_'] * len(target)
 chances = 7
 history = []

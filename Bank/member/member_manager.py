@@ -52,16 +52,15 @@ class MemberManager:
         print('---------- 관리자 메뉴 ----------')
         while True:
             menu = self.select_menu(MemberManager.admin_menu)
-            if menu == 0: break
-            elif menu == 1: # 회원목록
-                self.menu_member_list()
-            elif menu == 2: # 회원정보조회
-                self.menu_member_info()
-            elif menu == 3: # 회원강퇴
-                self.menu_member_remove()
-            elif menu == 4: # 로그아웃
-                self.menu_logout()
+            if menu == 0: 
+                self.menu_logout() # 0번을 눌러 종료할 때 로그아웃이 수행되도록 수정
                 break
+            elif menu == 1: 
+                self.menu_member_list()
+            elif menu == 2: 
+                self.menu_member_info()
+            elif menu == 3: 
+                self.menu_member_remove()
             else:
                 print('없는 메뉴입니다.')
 
@@ -82,12 +81,14 @@ class MemberManager:
         id = input(">> id : ")
         self.view_member_info(id)
 
-    def menu_member_remove(self):
-        id = input(">> id : ")
-        if self.ms.remove_member(id):
-            print('탈퇴 처리되었습니다.')
-        else:
-            print('회원 탈퇴 처리에 실패하였습니다.')
+    def menu_remove_member(self):
+        confirm = input('정말 탈퇴하시겠습니까? (y/n) : ')
+        if confirm.lower() == 'y':
+            if self.ms.remove_member(self.ms.current_user):
+                print('회원 탈퇴 처리되었습니다.')
+                self.menu_logout()
+            else:
+                print('회원 탈퇴 처리에 실패하였습니다.')
 
     def menu_logout(self):
         self.ms.logout()

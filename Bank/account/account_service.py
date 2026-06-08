@@ -7,9 +7,9 @@ class AccountService:
         self.__dao = account_dao
 
     def create_account(self, account):
-        # 계좌번호를 생성하여 반영
-        account.set_account_no(str(accountService.account_no_seq))
-        accountService.account_no_seq += 1
+        # 클래스 변수 접근 시 대소문자 정확히 수정
+        account.set_account_no(str(AccountService.account_no_seq))
+        AccountService.account_no_seq += 1
         return self.__dao.insert_account(account)
 
     def get_all_accounts(self):
@@ -56,10 +56,10 @@ class AccountService:
         return self.__dao.delete_account(account_no)
 
 if __name__ == '__main__':
-    aservice = accountService(accountDAO())
-    aservice.create_account(account(0, 'nam', 100000, '1234'))
-    aservice.create_account(account(0, 'nam', 200000, '1234'))
-    aservice.create_account(account(0, 'gy', 300000, '1234'))
+    aservice = AccountService(AccountDAO())
+    aservice.create_account(Account(0, 'nam', 100000, '1234'))
+    aservice.create_account(Account(0, 'nam', 200000, '1234'))
+    aservice.create_account(Account(0, 'gy', 300000, '1234'))
     for account in aservice.get_all_accounts():
         print(account)
     print()

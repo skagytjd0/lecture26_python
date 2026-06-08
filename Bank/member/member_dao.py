@@ -23,7 +23,7 @@ class MemberDAO:
         
     def get_all_members(self):
         if self.__memberDB:
-            return list(self.__membeytjdrDB.values())
+            return list(self.__memberDB.values())
     
     def update_member_info(self, id, member):
         if self.is_exist(id):

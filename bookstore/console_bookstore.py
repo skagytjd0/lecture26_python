@@ -196,18 +196,13 @@ class ConsoleBookstore:
             print('재고 부족으로 인해 주문을 실행할 수 없습니다.')
             return
             
-        # 임시 장바구니 연산 (함수 탈출 시 완전 자동 삭제 및 영속 셋 누수 방지)
-        temporary_cart_list = []
-        temp_item = Cart(self.msv.current_user, b_no, book.get_title(), qty, book.get_price())
-        temporary_cart_list.append(temp_item)
-        
-        print('-> 주문 도서가 일회성 임시 장바구니 세션에 할당되었습니다. 즉시 승인합니다.')
-        for i in range(len(temporary_cart_list)):
-            target_item = temporary_cart_list[i]
-            self.bsv.update_book_stock(target_item.get_book_no(), target_item.get_qty(), 'BUY')
-            print(f'[즉시주문 영수증] 제목: {target_item.get_title()}, 수량: {target_item.get_qty()}, 결제액: {target_item.get_qty() * target_item.get_price()}')
-        
-        print('>> [성공] 즉시 구매 승인이 완료되었으며, 임시 장바구니 세션이 파기되었습니다.')
+        mid = self.msv.current_user
+        temp_item = Cart(mid, book.get_book_no(), book.get_title(), qty, book.get_price())
+                
+        self.csv.add_to_cart(temp_item)
+        print(f'\n-> "{book.get_title()}" {qty}권이 장바구니에 생성 및 적재되었습니다.')
+        print('즉시 결제를 진행합니다...')
+        self.menu_checkout_cart()
 
     def run_user_inquiry_menu(self):
         while True:

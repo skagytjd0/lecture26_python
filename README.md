@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     direction TB
 
@@ -241,3 +242,4 @@ classDiagram
     style BookService fill:#fffbeb,stroke:#d97706,stroke-width:1px
     style CartService fill:#fdf2f8,stroke:#db2777,stroke-width:1px
     style InquiryService fill:#f0fdfa,stroke:#0d9488,stroke-width:1px
+```

@@ -213,7 +213,7 @@ classDiagram
     }
 
 %% ==================== RELATIONSHIPS ====================
-    ConsoleMarket --> UserService
+    ConsoleMarket -- UserService
     ConsoleMarket --> ItemService
     ConsoleMarket --> BidService
     ConsoleMarket --> WinningService

@@ -213,20 +213,3 @@ classDiagram
     }
 
     %% ==================== RELATIONSHIPS ====================
-    ConsoleMarket --> UserService : 의존성 주입
-    ConsoleMarket --> ItemService : 의존성 주입
-    ConsoleMarket --> BidService : 의존성 주입
-    ConsoleMarket --> WinningService : 의존성 주입
-    ConsoleMarket --> InquiryService : 의존성 주입
-
-    UserService --> UserDAO : 로직 위임
-    ItemService --> ItemDAO : 로직 위임
-    BidService --> BidDAO : 로직 위임
-    WinningService --> WinningDAO : 로직 위임
-    InquiryService --> InquiryDAO : 로직 위임
-
-    UserDAO "1" *-- "many" User : __memberDB 캡슐화 관리
-    ItemDAO "1" *-- "many" Item : __itemDB 캡슐화 관리
-    BidDAO "1" *-- "many" Bid : __bidDB 캡슐화 관리
-    WinningDAO "1" *-- "many" Winning : __winningDB 캡슐화 관리
-    InquiryDAO "1" *-- "many" Inquiry : __inquiryDB 캡슐화 관리

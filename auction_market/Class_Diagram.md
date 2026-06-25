@@ -212,4 +212,21 @@ classDiagram
         +answer_inquiry(inquiry_id, answer_text) bool
     }
 
-    %% ==================== RELATIONSHIPS ====================
+%% ==================== RELATIONSHIPS ====================
+    ConsoleMarket --> UserService
+    ConsoleMarket --> ItemService
+    ConsoleMarket --> BidService
+    ConsoleMarket --> WinningService
+    ConsoleMarket --> InquiryService
+
+    UserService --> UserDAO
+    ItemService --> ItemDAO
+    BidService --> BidDAO
+    WinningService --> WinningDAO
+    InquiryService --> InquiryDAO
+
+    UserDAO "1" *-- "many" User
+    ItemDAO "1" *-- "many" Item
+    BidDAO "1" *-- "many" Bid
+    WinningDAO "1" *-- "many" Winning
+    InquiryDAO "1" *-- "many" Inquiry

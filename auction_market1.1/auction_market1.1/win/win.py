@@ -4,7 +4,6 @@ class Winning:
         self.__item_id = item_id
         self.__user_id = user_id
         self.__final_amount = final_amount
-        self.__status = '미입금'
 
     def get_win_id(self): return self.__win_id
     def get_item_id(self): return self.__item_id
